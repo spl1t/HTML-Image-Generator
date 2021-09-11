@@ -1,0 +1,88 @@
+.header-recipe-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.header-recipe-block::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #00000030;
+}
+
+/*ШАПКА*/
+.header-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-logo {
+    width: 150px;
+    z-index: 0;
+}
+.header-title {
+    background: #f4b147;
+    border-radius: 8px;
+    margin-left: -25px;
+    max-width: 600px;
+    padding: 5px 15px;
+    padding-left: 30px;
+    font-size: 30px;
+    box-shadow: 2px 4px 7px 0px #0000007a;
+}
+
+/*ПРОДУКТЫ*/
+.header-products {
+    font-size: 24px;
+    flex-direction: column;
+    align-content: center;
+    background: #000000bd;
+    box-shadow: 0px 6px 16px #000000;
+    border-radius: 10px;
+    padding: 20px;
+}
+.header-products li {
+    border-bottom: 1px solid #eeeeee75;
+    line-height: 1.4;
+}
+.header-products li:nth-child(1) {
+    color: #f4b147;
+    border-bottom: 2px solid;
+}
+.header-products li:last-child {
+    border-bottom: 0;
+}
+
+.header-swipe {
+    padding: 20px;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 7px black;
+    text-align: center;
+    background: #000000bd;
+    box-shadow: 0px 6px 16px #000000;
+    border-radius: 10px;
+    border-bottom: 2px solid #fff;
+}
+.header-attetion {
+    font-size: 26px;
+    text-shadow: 0 0 7px black;
+}
+/*ФОН*/
+.header-image {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.15);
+}

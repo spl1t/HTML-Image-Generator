@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/header.css" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        var socket = io.connect('http://localhost:3000')
+
+        socket.on('message', (data) => {
+            console.log(data)
+
+            let featuredImage = data['featuredImage']
+            let title = data['titleRecipe']
+            let productList = data['products']
+
+            //console.log(data['products'])
+
+            document.querySelector('.header-title').innerHTML = title
+            for (product in productList) {
+                //console.log()
+                let li = document.createElement('li');
+                li.innerHTML = productList[product];
+                document.querySelector('.header-products').append(li)
+            }
+
+            document.querySelector('.header-image').src = featuredImage
+
+            socket.emit('greeting', { response: 'data received!' })
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-recipe-block recipe-block">
+            <div class="header-attetion">Пошаговый фото рецепт</div>
+
+            <div class="header-header">
+                <img class="header-logo" src="./assets/recipe-book.svg" >
+                <h1 class="header-title"></h1>
+            </div>
+
+            <ul class="header-products"></ul>
+            <img class="header-image" src="" >
+            <div class="header-swipe">Листайте вправо →</div>
+        </img>
+
+    </div>
+</body>
+
+</html>

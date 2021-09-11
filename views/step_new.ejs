@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/step_new.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000')
+
+        socket.on('message', (data) => {
+            console.log(data)
+
+            let titleRecipe = data['titleRecipe']
+            let numberStep = data['numberStep']
+            let textStep = data['textStep']
+            let imageStep = data['imageStep']
+
+            document.querySelector('.step__titleRecipe').innerHTML = titleRecipe
+            document.querySelector('.step__numberStep').innerHTML = `Шаг - ${numberStep}`
+            document.querySelector('.step__textStep').innerHTML = textStep
+            document.querySelector('.step__imageStep').src = imageStep
+
+            socket.emit('greeting', { response: 'data received!' })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="content-wrapper">
+
+        <div class="step-recipe-block recipe-block">
+
+            <img class="step__imageStep" src="">
+            <div class="step__content">
+                <div class="step__numberStep"></div>
+                <div class="step__textStep"></div>
+            </div>
+            <div class="step__brand">
+                <img class="step__logo" src="./assets/recipe-book.svg">
+                <div class="step__titleRecipe"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

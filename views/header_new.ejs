@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="css/header_new.css" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        var socket = io.connect('http://localhost:3000')
+
+        socket.on('message', (data) => {
+            console.log(data)
+
+            let featuredImage = data['featuredImage']
+            let title = data['titleRecipe']
+            let productList = data['products']
+
+            //console.log(data['products'])
+
+            document.querySelector('.header__titleRecipe').innerHTML = title
+            for (product in productList) {
+
+                let li = document.createElement('li');
+                li.innerHTML = productList[product];
+                document.querySelector('.header__productList').append(li)
+            }
+
+            document.querySelector('.header__featuredImage').src = featuredImage
+
+            socket.emit('greeting', { response: 'data received!' })
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="header-recipe-block recipe-block">
+            <div class="header-wrapper">
+                <img class="header__featuredImage" src="">
+                <div class="header__content">
+                    <h1 class="header__titleRecipe">Конвертики из лаваша с начинкой из курицы, помидора, сыра и зелени
+                    </h1>
+                    <ul class="header__metaList">
+                        <li>Постное</li>
+                        <li>Правильное питание</li>
+                    </ul>
+                    <div class="header__desc">Очень быстрый рецепт невероятно вкусного перекуса – конвертики из лаваша с
+                        сочной начинкой из курицы, помидора, сыра и зелени.</div>
+                    <ul class="header__productList">
+                        <li>Ингридиенты:</li>
+                    </ul>
+                </div>
+                <div class="header__brand">
+                    <img class="header__logo" src="./assets/recipe-book.svg">
+                    <div class="header__title">Пошаговый фото рецепт</div>
+                </div>
+
+                <div class="header__next">Листайте вправо →</div>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Bebas;
+    list-style-type: none;
+}
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.recipe-block {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    overflow: hidden;
+}
+.bg {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/BebasNeuePro-ExpandedRegular.woff') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/BebasNeuePro-ExpandedBold.woff') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('./fonts/BebasNeuePro-ExpandedExtraBold.woff') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
